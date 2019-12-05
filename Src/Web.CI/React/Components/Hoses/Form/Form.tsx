@@ -9,7 +9,7 @@ import {
   Input, Checkbox, ListItemText, FormControlLabel, Switch, FormGroup,
   InputAdornment, FormHelperText, FormLabel, Divider, List, ListItem,
   ListItemIcon, ButtonGroup, Popper, Grow, Paper, ClickAwayListener,
-  MenuList,
+  MenuList, RadioGroup, Radio,
 } from '@material-ui/core';
 import AttachmentIcon from '@material-ui/icons/Attachment';
 import ArrowDropDownIcon from '@material-ui/icons/ArrowDropDown';
@@ -26,6 +26,7 @@ import { IHose } from '../../../../../TypeScript/Utils/IHose';
 import { IAttachment } from '../../../../../TypeScript/Utils/IAttachment';
 import formLangs from './form.langs';
 import initialValues from './initialValues';
+import RadioLabel from './form.radioLabel';
 
 export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => {
   const [{ language }] = useStateValue();
@@ -404,13 +405,13 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               variant="filled"
               className={classes.item}
             >
-              <InputLabel htmlFor="Hose-Assistant">{myTexts.gauge}</InputLabel>
+              <InputLabel htmlFor="Hose-Assistant">{myTexts.diameter}</InputLabel>
               <Select
-                value={values.Gauge}
+                value={values.Diameter}
                 onChange={handleChange}
                 inputProps={{
-                  name: 'Gauge',
-                  id: 'Hose-Gauge',
+                  name: 'Diameter',
+                  id: 'Hose-Diameter',
                 }}
               >
                 <MenuItem value="0">&nbsp;</MenuItem>
@@ -485,14 +486,28 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
                         value="WorkPressureExceeds"
                         color="primary"
                         inputProps={{
-                          'aria-label': myTexts.workPressureExceeds,
+                          'aria-label': myTexts.workPressureExceeds.title,
                           id: 'WorkPressureExceeds',
                           name: 'WorkPressureExceeds',
                         }}
                       />
                     )
                   }
-                  label={myTexts.workPressureExceeds}
+                  label={(
+                    <>
+                      <strong>
+                        {(values.WorkPressureExceeds) ? myTexts.workPressureExceeds.yes : myTexts.workPressureExceeds.no}
+                      </strong>
+                      &nbsp;-&nbsp;
+                      {myTexts.workPressureExceeds.title}
+                      &nbsp;
+                      (
+                      {myTexts.workPressureExceeds.yes}
+                      /
+                      {myTexts.workPressureExceeds.no}
+                      )
+                    </>
+                  )}
                 />
                 <FormControlLabel
                   control={
@@ -510,14 +525,28 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
                         value="WorkPressureExceedsMandatory"
                         color="primary"
                         inputProps={{
-                          'aria-label': myTexts.workPressureExceedsMandatory,
+                          'aria-label': myTexts.workPressureExceedsMandatory.title,
                           id: 'WorkPressureExceedsMandatory',
                           name: 'WorkPressureExceedsMandatory',
                         }}
                       />
                     )
                   }
-                  label={myTexts.workPressureExceedsMandatory}
+                  label={(
+                    <>
+                      <strong>
+                        {(values.WorkPressureExceedsMandatory) ? myTexts.workPressureExceedsMandatory.yes : myTexts.workPressureExceedsMandatory.no}
+                      </strong>
+                      &nbsp;-&nbsp;
+                      {myTexts.workPressureExceedsMandatory.title}
+                      &nbsp;
+                      (
+                      {myTexts.workPressureExceedsMandatory.yes}
+                      /
+                      {myTexts.workPressureExceedsMandatory.no}
+                      )
+                    </>
+                  )}
                 />
               </FormGroup>
             </FormControl>
@@ -691,18 +720,18 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               variant="filled"
               className={classes.item}
             >
-              <InputLabel htmlFor="Hose-Terminal1">{myTexts.terminal1}</InputLabel>
+              <InputLabel htmlFor="Hose-Terminal1Gender">{myTexts.terminal1gender}</InputLabel>
               <Select
-                value={values.Terminal1}
+                value={values.Terminal1Gender}
                 onChange={handleChange}
                 inputProps={{
-                  name: 'Terminal1',
-                  id: 'Hose-Terminal1',
+                  name: 'Terminal1Gender',
+                  id: 'Hose-Terminal1Gender',
                 }}
               >
                 <MenuItem value="0">&nbsp;</MenuItem>
-                <MenuItem value="1">Terminal 01</MenuItem>
-                <MenuItem value="2">Terminal 02</MenuItem>
+                <MenuItem value="1">Gender 01</MenuItem>
+                <MenuItem value="2">Gender 02</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -716,18 +745,18 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               variant="filled"
               className={classes.item}
             >
-              <InputLabel htmlFor="Hose-Terminal1Gender">{myTexts.terminal1gender}</InputLabel>
+              <InputLabel htmlFor="Hose-Terminal1">{myTexts.terminal1}</InputLabel>
               <Select
-                value={values.Terminal1Gender}
+                value={values.Terminal1}
                 onChange={handleChange}
                 inputProps={{
-                  name: 'Terminal1Gender',
-                  id: 'Hose-Terminal1Gender',
+                  name: 'Terminal1',
+                  id: 'Hose-Terminal1',
                 }}
               >
                 <MenuItem value="0">&nbsp;</MenuItem>
-                <MenuItem value="1">Gender 01</MenuItem>
-                <MenuItem value="2">Gender 02</MenuItem>
+                <MenuItem value="1">Terminal 01</MenuItem>
+                <MenuItem value="2">Terminal 02</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -878,18 +907,18 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               variant="filled"
               className={classes.item}
             >
-              <InputLabel htmlFor="Hose-Terminal2">{myTexts.terminal2}</InputLabel>
+              <InputLabel htmlFor="Hose-Terminal2Gender">{myTexts.terminal2gender}</InputLabel>
               <Select
-                value={values.Terminal2}
+                value={values.Terminal2Gender}
                 onChange={handleChange}
                 inputProps={{
-                  name: 'Terminal2',
-                  id: 'Hose-Terminal2',
+                  name: 'Terminal2Gender',
+                  id: 'Hose-Terminal2Gender',
                 }}
               >
                 <MenuItem value="0">&nbsp;</MenuItem>
-                <MenuItem value="1">Terminal 01</MenuItem>
-                <MenuItem value="2">Terminal 02</MenuItem>
+                <MenuItem value="1">Gender 01</MenuItem>
+                <MenuItem value="2">Gender 02</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -903,18 +932,18 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               variant="filled"
               className={classes.item}
             >
-              <InputLabel htmlFor="Hose-Terminal2Gender">{myTexts.terminal2gender}</InputLabel>
+              <InputLabel htmlFor="Hose-Terminal2">{myTexts.terminal2}</InputLabel>
               <Select
-                value={values.Terminal2Gender}
+                value={values.Terminal2}
                 onChange={handleChange}
                 inputProps={{
-                  name: 'Terminal2Gender',
-                  id: 'Hose-Terminal2Gender',
+                  name: 'Terminal2',
+                  id: 'Hose-Terminal2',
                 }}
               >
                 <MenuItem value="0">&nbsp;</MenuItem>
-                <MenuItem value="1">Gender 01</MenuItem>
-                <MenuItem value="2">Gender 02</MenuItem>
+                <MenuItem value="1">Terminal 01</MenuItem>
+                <MenuItem value="2">Terminal 02</MenuItem>
               </Select>
             </FormControl>
           </Grid>
@@ -1148,26 +1177,30 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               component="fieldset"
               className={classes.item}
             >
-              <FormControlLabel
-                control={
-                  (
-                    <Switch
-                      checked={values.Security}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-                        setFieldValue('Security', event.target.checked);
-                      }}
-                      value="Security"
-                      color="primary"
-                      inputProps={{
-                        'aria-label': myTexts.security,
-                        id: 'Security',
-                        name: 'Security',
-                      }}
-                    />
-                  )
-                }
-                label={myTexts.security}
-              />
+              <FormLabel component="legend">{myTexts.security.title}</FormLabel>
+              <RadioGroup
+                aria-label={myTexts.security.title}
+                name="Security"
+                value={values.Security}
+                onChange={(): void => {
+                  setFieldValue('Security', !values.Security);
+                }}
+              >
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.security.low.label} title={myTexts.security.low.title} />
+                  )}
+                />
+                <FormControlLabel
+                  value
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.security.high.label} title={myTexts.security.high.title} />
+                  )}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
           <Grid
@@ -1180,26 +1213,30 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               component="fieldset"
               className={classes.item}
             >
-              <FormControlLabel
-                control={
-                  (
-                    <Switch
-                      checked={values.Environment}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-                        setFieldValue('Environment', event.target.checked);
-                      }}
-                      value="Environment"
-                      color="primary"
-                      inputProps={{
-                        'aria-label': myTexts.environment,
-                        id: 'Environment',
-                        name: 'Environment',
-                      }}
-                    />
-                  )
-                }
-                label={myTexts.environment}
-              />
+              <FormLabel component="legend">{myTexts.environment.title}</FormLabel>
+              <RadioGroup
+                aria-label={myTexts.environment.title}
+                name="Environment"
+                value={values.Environment}
+                onChange={(): void => {
+                  setFieldValue('Environment', !values.Security);
+                }}
+              >
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.environment.low.label} title={myTexts.environment.low.title} />
+                  )}
+                />
+                <FormControlLabel
+                  value
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.environment.high.label} title={myTexts.environment.high.title} />
+                  )}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
           <Grid
@@ -1212,26 +1249,30 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               component="fieldset"
               className={classes.item}
             >
-              <FormControlLabel
-                control={
-                  (
-                    <Switch
-                      checked={values.Operability}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-                        setFieldValue('Operability', event.target.checked);
-                      }}
-                      value="Operability"
-                      color="primary"
-                      inputProps={{
-                        'aria-label': myTexts.operability,
-                        id: 'Operability',
-                        name: 'Operability',
-                      }}
-                    />
-                  )
-                }
-                label={myTexts.operability}
-              />
+              <FormLabel component="legend">{myTexts.operability.title}</FormLabel>
+              <RadioGroup
+                aria-label={myTexts.operability.title}
+                name="Operability"
+                value={values.Operability}
+                onChange={(): void => {
+                  setFieldValue('Operability', !values.Operability);
+                }}
+              >
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.operability.low.label} title={myTexts.operability.low.title} />
+                  )}
+                />
+                <FormControlLabel
+                  value
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.operability.high.label} title={myTexts.operability.high.title} />
+                  )}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
           <Grid
@@ -1244,26 +1285,30 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               component="fieldset"
               className={classes.item}
             >
-              <FormControlLabel
-                control={
-                  (
-                    <Switch
-                      checked={values.Accessibility}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-                        setFieldValue('Accessibility', event.target.checked);
-                      }}
-                      value="Accessibility"
-                      color="primary"
-                      inputProps={{
-                        'aria-label': myTexts.accessibility,
-                        id: 'Accessibility',
-                        name: 'Accessibility',
-                      }}
-                    />
-                  )
-                }
-                label={myTexts.accessibility}
-              />
+              <FormLabel component="legend">{myTexts.accessibility.title}</FormLabel>
+              <RadioGroup
+                aria-label={myTexts.accessibility.title}
+                name="Accessibility"
+                value={values.Accessibility}
+                onChange={(): void => {
+                  setFieldValue('Accessibility', !values.Accessibility);
+                }}
+              >
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.accessibility.low.label} title={myTexts.accessibility.low.title} />
+                  )}
+                />
+                <FormControlLabel
+                  value
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.accessibility.high.label} title={myTexts.accessibility.high.title} />
+                  )}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
           <Grid
@@ -1276,26 +1321,30 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
               component="fieldset"
               className={classes.item}
             >
-              <FormControlLabel
-                control={
-                  (
-                    <Switch
-                      checked={values.Abrasion}
-                      onChange={(event: React.ChangeEvent<HTMLInputElement>): void => {
-                        setFieldValue('Abrasion', event.target.checked);
-                      }}
-                      value="Abrasion"
-                      color="primary"
-                      inputProps={{
-                        'aria-label': myTexts.abrasion,
-                        id: 'Abrasion',
-                        name: 'Abrasion',
-                      }}
-                    />
-                  )
-                }
-                label={myTexts.abrasion}
-              />
+              <FormLabel component="legend">{myTexts.abrasion.title}</FormLabel>
+              <RadioGroup
+                aria-label={myTexts.abrasion.title}
+                name="Abrasion"
+                value={values.Abrasion}
+                onChange={(): void => {
+                  setFieldValue('Abrasion', !values.Abrasion);
+                }}
+              >
+                <FormControlLabel
+                  value={false}
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.abrasion.low.label} title={myTexts.abrasion.low.title} />
+                  )}
+                />
+                <FormControlLabel
+                  value
+                  control={<Radio />}
+                  label={(
+                    <RadioLabel label={myTexts.abrasion.high.label} title={myTexts.abrasion.high.title} />
+                  )}
+                />
+              </RadioGroup>
             </FormControl>
           </Grid>
         </Grid>
@@ -1625,7 +1674,7 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
                 variant="contained"
                 style={{ color: 'white' }}
                 type="submit"
-                title="Submit"
+                title={myTexts.save[selectedIndex]}
                 disabled={isSubmitting}
               >
                 {myTexts.save[selectedIndex]}
@@ -1635,6 +1684,7 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
                 size="small"
                 aria-owns={open ? 'menu-list-grow' : undefined}
                 aria-haspopup="true"
+                title="Choose save options"
                 onClick={handleToggle}
               >
                 <ArrowDropDownIcon />
@@ -1654,7 +1704,7 @@ export const HoseForm = (props: FormikProps<IHose>): React.ReactElement<any> => 
                         {myTexts.save.map((option, index): React.ReactNode => (
                           <MenuItem
                             key={option}
-                            disabled={index === 2}
+                            disabled={index === 3}
                             selected={index === selectedIndex}
                             onClick={(event): void => handleMenuItemClick(event, index)}
                           >

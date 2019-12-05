@@ -40,12 +40,20 @@ const formLangs = (l: string): IHoseForm => {
     brand: 'Marca',
     rule: 'Norma',
     compatibleRules: 'Normas compatíveis',
-    fluid: 'Fluído',
-    gauge: 'Ângulo',
+    fluid: 'Fluido',
+    diameter: 'Diâmetro interno',
     workPressureLegend: 'Pressão de trabalho',
     workPressure: 'Pressão de trabalho',
-    workPressureExceeds: 'Pressão de trabalho excede a norma',
-    workPressureExceedsMandatory: 'É necessário exceder a norma?',
+    workPressureExceeds: {
+      title: 'Pressão de trabalho excede a norma',
+      yes: 'Sim',
+      no: 'Não',
+    },
+    workPressureExceedsMandatory: {
+      title: 'É necessário exceder a norma?',
+      yes: 'Sim',
+      no: 'Não',
+    },
     workPressureOverRule: 'Pressão de trabalho personalizada',
     size: 'Tamanho',
     length: 'Comprimento',
@@ -59,20 +67,75 @@ const formLangs = (l: string): IHoseForm => {
     terminal2gender: 'Gênero do terminal 2',
     terminal2: 'Terminal 2',
     terminal2Angle: 'Ângulo terminal 2',
-    terminal2Material: 'Tipo de aterial',
+    terminal2Material: 'Tipo de material',
     terminal2Abrasion: 'Desgaste do terminal 2',
     adapter2: 'Adaptador 2',
     adapter2Abrasion: 'Desgaste do adaptador 2',
     additional: 'Informações adicionais',
     angle: 'Ângulo de montagem',
-    radius: 'Raio de montagem',
+    radius: 'Raio mínimo de curvatura',
     recommended: 'Recomendação de periodicidade de inspeção',
     criticality: 'Criticidade',
-    security: 'Segurança',
-    environment: 'Meio ambiente',
-    operability: 'Operabilidade',
-    accessibility: 'Acessibilidade',
-    abrasion: 'Abrasão',
+    security: {
+      title: 'Segurança',
+      low: {
+        title: 'Baixa',
+        label: 'Proximidade aos colaboradores, com proteção de segurança; Mangueira instalada longe da presença de pessoas.',
+      },
+      high: {
+        title: 'Alta',
+        label: `Proximidade das mangueiras com colaboradores (sem proteções de segurança), máquinas e equipamentos com alta temperatura,
+        painéis elétricos e afins.`,
+      },
+    },
+    environment: {
+      title: 'Meio ambiente',
+      low: {
+        title: 'Baixa',
+        label: `Mangueira instalada em local que ,se rompida ou tiver vazamento, não entra em contato direto com o mar, piso de embarcações,
+        lençois freáticos e afins.`,
+      },
+      high: {
+        title: 'Alta',
+        label: `Mangueira instalada em local que, se rompida ou tiver vazamento, entra em contato direto com o mar, piso de embarcações,
+        lençois freáticos e afins.`,
+      },
+    },
+    operability: {
+      title: 'Operabilidade',
+      low: {
+        title: 'Baixa',
+        label: `Mangueira instalada que, se tiver qualquer avaria e necessite troca ou reparo, mantém a operação da máquina e/ou
+        equipamento instalado.`,
+      },
+      high: {
+        title: 'Alta',
+        label: `Mangueira instalada que, se tiver qualquer avaria e necessite troca ou reparo, impede a operação da máquina e/ou
+        equipamento instalado.`,
+      },
+    },
+    accessibility: {
+      title: 'Acessibilidade',
+      low: {
+        title: 'Baixa',
+        label: 'Mangueira instalada com dificuldade de acesso em caso de avaria com necessidade de troca ou reparo.',
+      },
+      high: {
+        title: 'Alta',
+        label: 'Mangueira instalada com dificuldade de acesso em caso de avaria com necessidade de troca ou reparo.',
+      },
+    },
+    abrasion: {
+      title: 'Abrasão',
+      low: {
+        title: 'Baixa',
+        label: 'Mangueira instalada e/ou de processo que não possua atrito com barreiras (chapas, chão, instalações físicas) e/ou outras mangueiras.',
+      },
+      high: {
+        title: 'Alta',
+        label: 'Mangueira instalada e/ou de processo que tenha atrito com barreiras (chapas, chão, instalações físicas) e/ou outras mangueiras.',
+      },
+    },
     location: 'Localização',
     from: 'De',
     to: 'Para',
@@ -91,7 +154,8 @@ const formLangs = (l: string): IHoseForm => {
     },
     save: [
       'Salvar e encerrar',
-      'Salvar e continuar inserindo',
+      'Salvar e continuar',
+      'Visualizar',
     ],
   };
 
@@ -134,11 +198,19 @@ const formLangs = (l: string): IHoseForm => {
     rule: 'Rule',
     compatibleRules: 'Compatible rules',
     fluid: 'Fluid',
-    gauge: 'Gauge',
+    diameter: 'Internal diameter',
     workPressureLegend: 'Work pressure',
     workPressure: 'Work pressure',
-    workPressureExceeds: 'Work pressure exceeds rule',
-    workPressureExceedsMandatory: 'Is it mandatory to exceed?',
+    workPressureExceeds: {
+      title: 'Work pressure exceeds rule',
+      yes: 'Yes',
+      no: 'No',
+    },
+    workPressureExceedsMandatory: {
+      title: 'Is it mandatory to exceed?',
+      yes: 'Yes',
+      no: 'No',
+    },
     workPressureOverRule: 'Custom work pressure',
     size: 'Size',
     length: 'Length',
@@ -158,14 +230,66 @@ const formLangs = (l: string): IHoseForm => {
     adapter2Abrasion: 'Adapter 2 abrasion',
     additional: 'Additional info',
     angle: 'Mounting angle',
-    radius: 'Mounting radius',
+    radius: 'minimum radius of curvature',
     recommended: 'Inspection Periodicity Recommendation',
     criticality: 'Criticality',
-    security: 'Security',
-    environment: 'Environment',
-    operability: 'Operability',
-    accessibility: 'Acessibilidade',
-    abrasion: 'Abrasão',
+    security: {
+      title: 'Security',
+      low: {
+        title: 'Low',
+        label: 'Proximity to employees, with security protection; Hose installed away from people.',
+      },
+      high: {
+        title: 'High',
+        label: 'Proximity to hoses with employees (without safety guards), high temperature machines and equipment, electrical panels and the like.',
+      },
+    },
+    environment: {
+      title: 'Environment',
+      low: {
+        title: 'Low',
+        label: `Hose installed in a location that, if broken or leaks, does not come into direct contact with the sea, boat floors, groundwater and
+        the like.`,
+      },
+      high: {
+        title: 'High',
+        label: `Hose installed in a location that, if ruptured or leaks, comes into direct contact with the sea, boat floor, groundwater
+        and the like.`,
+      },
+    },
+    operability: {
+      title: 'Operability',
+      low: {
+        title: 'Low',
+        label: 'Hose installed which, if damaged and requires replacement or repair, maintains operation of the machine and/or equipment installed.',
+      },
+      high: {
+        title: 'High',
+        label: 'Hose installed which, if damaged and requires replacement or repair, prevents operation of the installed machine and/or equipment.',
+      },
+    },
+    accessibility: {
+      title: 'Accessibility',
+      low: {
+        title: 'Low',
+        label: 'Hose installed without difficulty in case of breakdown requiring replacement or repair.',
+      },
+      high: {
+        title: 'High',
+        label: 'Hose installed with difficult access in case of malfunction requiring replacement or repair.',
+      },
+    },
+    abrasion: {
+      title: 'Abrasion',
+      low: {
+        title: 'Low',
+        label: 'Installed and/or process hose that has no friction with barriers (sheets, floor, physical installations) and/or other hoses.',
+      },
+      high: {
+        title: 'High',
+        label: 'Installed and/or process hose that has friction with barriers (sheets, floor, physical installations) and/or other hoses.',
+      },
+    },
     location: 'Location',
     from: 'From',
     to: 'To',
@@ -184,7 +308,8 @@ const formLangs = (l: string): IHoseForm => {
     },
     save: [
       'Save and finish',
-      'Save and continue inserting',
+      'Save and continue',
+      'View data',
     ],
   };
 
